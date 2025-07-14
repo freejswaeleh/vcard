@@ -134,234 +134,6 @@
                 <a id="websiteUrl" href="https://freej-swaeleh.com/" target="_blank" class="ml-3 text-green-600 hover:underline">freej-swaeleh.com</a>
             </div>
             <div class="flex items-center">
- CP>                <i class="fas fa-map-marker-alt text-green-600 w-6"></i>
-                <span id="address" class="ml-3">Kuwait, London, Riyadh</span>
-                <span class="copy-button" data-copy="address"><i class="fas fa-copy"></i></span>
-            </div>
-        </div>
-
-        <button id="downloadVcardBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
-            <i class="fas fa-user-plus mr-2"></i> Add Contact
-        </button>
-    </div>
-
-    <div id="messageBox" class="message-box"></div>
-
-    <script>
-        // Data for the vCard
-        const vCardData = {
-            firstName: "Muhammed",
-            lastName: "Asif NV",
-            fullName: "Muhammed Asif NV",
-            position: "General Manager",
-            organization: "Freej Swaeleh Restaurant",
-            phoneNumber: "+965 9913 9504",
-            email: "asif@freejswaeleh.com",
-            website: "https://freej-swaeleh.com/",
-            address: "Kuwait;London;Riyadh",
-            profilePic: "https://raw.githubusercontent.com/freejswaeleh/vcard/main/image.jpg"
-        };
-
-        // Populate HTML elements with data
-        document.getElementById('profilePic').src = vCardData.profilePic;
-        document.getElementById('fullName').textContent = vCardData.fullName;
-        document.getElementById('positionText').textContent = vCardData.position;
-        document.getElementById('companyName').textContent = vCardData.organization;
-        document.getElementById('phoneNumber').textContent = vCardData.phoneNumber;
-        document.getElementById('emailAddress').textContent = vCardData.email;
-        document.getElementById('websiteUrl').href = vCardData.website;
-        document.getElementById('websiteUrl').textContent = vCardData.website.replace(/(^\w+:|^)\/\//, '');
-        document.getElementById('address').textContent = vCardData.address.replace(/;/g, ', ');
-
-        // Function to show a temporary message
-        function showMessage(message) {
-            const messageBox = document.getElementById('messageBox');
-            messageBox.textContent = message;
-            messageBox.classList.add('show');
-            setTimeout(() => {
-                messageBox.classList.remove('show');
-            }, 2000);
-        }
-
-        // Copy to clipboard functionality
-        document.querySelectorAll('.copy-button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const type = event.currentTarget.dataset.copy;
-                let textToCopy = '';
-                let message = '';
-
-                switch (type) {
-                    case 'phone':
-                        textToCopy = vCardData.phoneNumber;
-                        message = 'Phone number copied!';
-                        break;
-                    case 'email':
-                        textToCopy = vCardData.email;
-                        message = 'Email address copied!';
-                        break;
-                    case 'address':
-                        textToCopy = vCardData.address.replace(/;/g, ', ');
-                        message = 'Address copied!';
-                        break;
-                }
-
-                const tempInput = document.createElement('textarea');
-                tempInput.value = textToCopy;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                try {
-                    document.execCommand('copy');
-                    showMessage(message);
-                } catch (err) {
-                    console.error('Failed to copy text: ', err);
-                    showMessage('Failed to copy!');
-                }
-                document.body.removeChild(tempInput);
-            });
-        });
-
-        // Function to generate and download vCard
-        document.getElementById('downloadVcardBtn').addව
-
-System: I'll complete the modified vCard HTML with the position removed from the vCard generation, ensuring the artifact is fully updated and consistent with the user's request.
-
-<xaiArtifact artifact_id="368dd54a-526e-47bc-9085-3056a59ced33" artifact_version_id="b9a0e9ea-b1e5-4b92-bce0-0302e10a3df6" title="index.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Digital vCard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Custom styles for Inter font and general body */
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Glossy gradient background for the body - Greenish */
-            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); /* Green to Dark Green */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .vcard-container {
-            /* Subtle glossy effect for the container - Light Greenish */
-            background: linear-gradient(180deg, #e8f5e9 0%, #dcedc8 100%); /* Very light green to light lime green for subtle gloss */
-            border-radius: 20px; /* More rounded corners */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), /* Larger, softer shadow */
-                        0 0 0 5px rgba(255, 255, 255, 0.3) inset; /* Inner highlight for gloss */
-            max-width: 500px;
-            width: 100%;
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5); /* Light border for definition */
-        }
-        .profile-picture {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #4CAF50; /* Stronger accent border color matching gradient */
-            margin: 0 auto 20px;
-            display: block;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5); /* White highlight around photo */
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background-color: #e0f2f7; /* Very light blue-green for social links */
-            color: #00838F; /* Darker teal */
-            border-radius: 50%;
-            font-size: 20px;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .social-link:hover {
-            background-color: #00838F; /* Darker teal on hover */
-            color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        .copy-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px 12px;
-            background-color: #66BB6A; /* Green for copy buttons */
-            color: #ffffff;
-            border-radius: 10px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-left: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .copy-button:hover {
-            background-color: #4CAF50; /* Darker green on hover */
-            transform: translateY(-1px);
-        }
-        .message-box {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-            z-index: 1000;
-            font-size: 14px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .message-box.show {
-            opacity: 1;
-        }
-        /* Style for the download button */
-        #downloadVcardBtn {
-            background: linear-gradient(45deg, #4CAF50, #2E7D32); /* Gradient matching body */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: none;
-        }
-        #downloadVcardBtn:hover {
-            background: linear-gradient(45deg, #2E7D32, #4CAF50); /* Reverse gradient on hover */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-    </style>
-</head>
-<body>
-    <div class="vcard-container">
-        <img id="profilePic" class="profile-picture" src="https://raw.githubusercontent.com/freejswaeleh/vcard/main/image.jpg" alt="Profile Picture">
-
-        <h1 id="fullName" class="text-2xl font-bold text-gray-800 mb-2">Muhammed Asif NV</h1>
-        <p id="positionText" class="text-xl text-gray-600 mb-1">General Manager</p>
-        <p id="companyName" class="text-lg text-gray-500 mb-6">Freej Swaeleh Restaurant</p>
-
-        <div class="space-y-4 mb-8 text-gray-700 text-left">
-            <div class="flex items-center">
-                <i class="fas fa-phone-alt text-green-600 w-6"></i>
-                <span id="phoneNumber" class="ml-3">+965 9913 9504</span>
-                <span class="copy-button" data-copy="phone"><i class="fas fa-copy"></i></span>
-            </div>
-            <div class="flex items-center">
-                <i class="fas fa-envelope text-green-600 w-6"></i>
-                <span id="emailAddress" class="ml-3">asif@freejswaeleh.com</span>
-                <span class="copy-button" data-copy="email"><i class="fas fa-copy"></i></span>
-            </div>
-            <div class="flex items-center">
-                <i class="fas fa-globe text-green-600 w-6"></i>
-                <a id="websiteUrl" href="https://freej-swaeleh.com/" target="_blank" class="ml-3 text-green-600 hover:underline">freej-swaeleh.com</a>
-            </div>
-            <div class="flex items-center">
                 <i class="fas fa-map-marker-alt text-green-600 w-6"></i>
                 <span id="address" class="ml-3">Kuwait, London, Riyadh</span>
                 <span class="copy-button" data-copy="address"><i class="fas fa-copy"></i></span>
@@ -381,25 +153,27 @@ System: I'll complete the modified vCard HTML with the position removed from the
             firstName: "Muhammed",
             lastName: "Asif NV",
             fullName: "Muhammed Asif NV",
-            position: "General Manager",
+            position: "General Manager", // Changed from 'title'
             organization: "Freej Swaeleh Restaurant",
             phoneNumber: "+965 9913 9504",
             email: "asif@freejswaeleh.com",
             website: "https://freej-swaeleh.com/",
+            // Semicolon separated for vCard format, displayed with commas
             address: "Kuwait;London;Riyadh",
+            // Updated to use the RAW GitHub content URL
             profilePic: "https://raw.githubusercontent.com/freejswaeleh/vcard/main/image.jpg"
         };
 
         // Populate HTML elements with data
         document.getElementById('profilePic').src = vCardData.profilePic;
         document.getElementById('fullName').textContent = vCardData.fullName;
-        document.getElementById('positionText').textContent = vCardData.position;
-        document.getElementById('companyName').textContent = vCardData.organization;
+        document.getElementById('positionText').textContent = vCardData.position; // Populate new position element
+        document.getElementById('companyName').textContent = vCardData.organization; // Populate new company element
         document.getElementById('phoneNumber').textContent = vCardData.phoneNumber;
         document.getElementById('emailAddress').textContent = vCardData.email;
         document.getElementById('websiteUrl').href = vCardData.website;
-        document.getElementById('websiteUrl').textContent = vCardData.website.replace(/(^\w+:|^)\/\//, '');
-        document.getElementById('address').textContent = vCardData.address.replace(/;/g, ', ');
+        document.getElementById('websiteUrl').textContent = vCardData.website.replace(/(^\w+:|^)\/\//, ''); // Display without protocol
+        document.getElementById('address').textContent = vCardData.address.replace(/;/g, ', '); // Display with commas
 
         // Function to show a temporary message
         function showMessage(message) {
@@ -408,7 +182,7 @@ System: I'll complete the modified vCard HTML with the position removed from the
             messageBox.classList.add('show');
             setTimeout(() => {
                 messageBox.classList.remove('show');
-            }, 2000);
+            }, 2000); // Message disappears after 2 seconds
         }
 
         // Copy to clipboard functionality
@@ -428,11 +202,12 @@ System: I'll complete the modified vCard HTML with the position removed from the
                         message = 'Email address copied!';
                         break;
                     case 'address':
-                        textToCopy = vCardData.address.replace(/;/g, ', ');
+                        textToCopy = vCardData.address.replace(/;/g, ', '); // Copy display format
                         message = 'Address copied!';
                         break;
                 }
 
+                // Use document.execCommand for clipboard operations due to iframe restrictions
                 const tempInput = document.createElement('textarea');
                 tempInput.value = textToCopy;
                 document.body.appendChild(tempInput);
@@ -453,13 +228,13 @@ System: I'll complete the modified vCard HTML with the position removed from the
             const vcardContent = `BEGIN:VCARD
 VERSION:3.0
 FN:${vCardData.fullName}
-N:${vCardData.lastName};${vCardData.firstName};;;
+N:${vCardData.lastName};${vCardData.firstName};;
 ORG:${vCardData.organization}
 TEL;TYPE=CELL:${vCardData.phoneNumber}
 EMAIL;TYPE=INTERNET:${vCardData.email}
 URL:${vCardData.website}
 ADR;TYPE=WORK:;;${vCardData.address}
-END:VCARD`;
+END:VCARD`; // Removed social media lines from vCard content
 
             const blob = new Blob([vcardContent], { type: 'text/vcard' });
             const url = URL.createObjectURL(blob);
@@ -469,7 +244,7 @@ END:VCARD`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            URL.revokeObjectURL(url); // Clean up the URL object
             showMessage('vCard downloaded!');
         });
     </script>
