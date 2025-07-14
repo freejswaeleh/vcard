@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Digital vCard</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Custom styles for Inter font and general body */
@@ -114,16 +112,12 @@
 </head>
 <body>
     <div class="vcard-container">
-        <!-- Profile Picture -->
-        <!-- Updated to use the raw GitHub content URL -->
-        <img id="profilePic" class="profile-picture" src="https://github.com/freejswaeleh/vcard/blob/main/image.jpg" alt="Profile Picture">
+        <img id="profilePic" class="profile-picture" src="https://raw.githubusercontent.com/freejswaeleh/vcard/main/image.jpg" alt="Profile Picture">
 
-        <!-- Name and Title -->
         <h1 id="fullName" class="text-3xl font-bold text-gray-800 mb-2">Muhammed Asif NV</h1>
         <p id="positionText" class="text-xl text-gray-600 mb-1">General Manager</p>
         <p id="companyName" class="text-lg text-gray-500 mb-6">Freej Swaeleh Restaurant</p>
 
-        <!-- Contact Information -->
         <div class="space-y-4 mb-8 text-gray-700 text-left">
             <div class="flex items-center">
                 <i class="fas fa-phone-alt text-green-600 w-6"></i>
@@ -146,16 +140,11 @@
             </div>
         </div>
 
-        <!-- Social Media Links - REMOVED -->
-        <!-- The div containing social links was here -->
-
-        <!-- Download vCard Button -->
         <button id="downloadVcardBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
             <i class="fas fa-user-plus mr-2"></i> Add Contact
         </button>
     </div>
 
-    <!-- Message Box for Copy Confirmation -->
     <div id="messageBox" class="message-box"></div>
 
     <script>
@@ -171,9 +160,8 @@
             website: "https://freej-swaeleh.com/",
             // Semicolon separated for vCard format, displayed with commas
             address: "Kuwait;London;Riyadh",
-            // Removed social media properties
-            // Updated to use the raw GitHub content URL
-            profilePic: "https://github.com/freejswaeleh/vcard/blob/main/image.jpg"
+            // Updated to use the RAW GitHub content URL
+            profilePic: "https://raw.githubusercontent.com/freejswaeleh/vcard/main/image.jpg"
         };
 
         // Populate HTML elements with data
@@ -186,12 +174,6 @@
         document.getElementById('websiteUrl').href = vCardData.website;
         document.getElementById('websiteUrl').textContent = vCardData.website.replace(/(^\w+:|^)\/\//, ''); // Display without protocol
         document.getElementById('address').textContent = vCardData.address.replace(/;/g, ', '); // Display with commas
-
-        // Removed social link population
-        // document.getElementById('linkedinUrl').href = vCardData.linkedin;
-        // document.getElementById('githubUrl').href = vCardData.github;
-        // document.getElementById('twitterUrl').href = vCardData.twitter;
-        // document.getElementById('instagramUrl').href = vCardData.instagram;
 
         // Function to show a temporary message
         function showMessage(message) {
